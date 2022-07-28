@@ -123,6 +123,16 @@ export default async () => {
                     };
                 }
             }
+            
+            // See also
+            for (const credit of (addonManifest.seeAlso || [])) {
+                if (credit.description) {
+                    addonMessages[`${addonId}/@seeAlso-${credit.addon}`] = {
+                        string: credit.description,
+                        developer_comment: `See also relation for addon "${credit.addon}" in "${addonManifest.name}"`
+                    };
+                }
+            }
 
 
             const generateSettings = (setting, tableId) => {
